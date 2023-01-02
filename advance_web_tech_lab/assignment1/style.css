@@ -1,0 +1,120 @@
+html, body{
+	overflow-x: hidden;
+	margin: 0px;
+	height: 100%;
+	min-height: 100% !important;
+	width: 100%;
+}
+
+header {
+	display: block;
+	height: 70px;
+	width: 100%;
+}
+
+.snap-looksgood {
+	padding: 15px 30px 15px 30px;
+	font-size: 35px;
+	font-weight: bold;
+	float: left;
+}
+
+.lets-explore {
+	padding: 25px 20px;
+	font-size: 20px;
+	float: left;
+}
+
+.registration-form {
+	margin: 15px 30px 9px;
+	padding: 10px;
+	font-size: 20px;
+	float: right;
+
+	border-radius: 15px;
+	border-style: ridge;
+}
+
+.down-arrow {
+	border: ridge black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 4px;
+
+	margin-bottom: 3px;
+	margin-left: 1px;
+	transform: rotate(45deg);
+}
+
+.down-arrow:hover {
+	transform: rotate(-135deg);
+	margin-bottom: 0px;
+	margin-top: 8px;
+}
+
+.container {
+	width: 100%;
+	height: 80%;
+	display: flex;
+}
+
+.make-remote-work {
+	height: 100%;
+	width: 60%;
+	float: left;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.textblock h1 {
+	font-size: 5em;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 0.9em;
+	margin-bottom: 0.3em;
+}
+
+.textblock p {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.4em;
+	font-size: 1.1em;
+	color: #303234;
+}
+
+.textblock .learn-more {
+	background-color: black;
+	display: flex;
+	color: white;
+	font-weight: bold;
+	padding: 12px;
+	border-radius: 10px;
+	border: 1px solid black;
+	width: 30%;
+	justify-content: center;
+	align-items: center;
+}
+
+.textblock .learn-more:hover {
+	border: 1px solid black;
+	color: black;
+	background-color: white;
+}
+
+.hero-image {
+	float: right;
+	margin: 40px;
+	width: 40%;
+	height: 50%;
+}
+
+.hero-image img {
+	width: 560px;
+}
+
+.textblock a:link {
+  text-decoration: none;
+}
+
+.textblock a:visited {
+  text-decoration: none;
+}
