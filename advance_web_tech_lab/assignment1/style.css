@@ -118,3 +118,13 @@ header {
 .textblock a:visited {
   text-decoration: none;
 }
+
+.features-block,.company-block {
+	background-color: black;
+	position: absolute;
+	color: white;
+	display: none;
+	padding: 20px;
+
+	border-radius: 20px;
+}
