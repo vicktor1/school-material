@@ -12,7 +12,6 @@ function main()
 
 // this code polymorphic cause it execute code by feching function pointer
 // for required element
-
 	function generate_block_on_hover (element, whichblock) {
 		element.addEventListener("mouseover", function () {
 			const divRect = element.getBoundingClientRect();
@@ -27,6 +26,7 @@ function main()
 			whichblock.style.display = "none";
 		})
 	}
+
 
 // this code look much cleaner
 	generate_block_on_hover(features, features_block)

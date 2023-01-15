@@ -29,3 +29,17 @@
 #### Questions
 > *Find out OpenSource Replacement for Heroku*
 
+##  Second Day
+
+1. Fighting for USB file
+
+## Third day
+
+1. Create two or more virtual machines with different guest operating systems and assign the resources
+2. Create a Virtual network Comprising of above machine
+3. Connect the virtual Machines. Test the connectivity
+
+4. Transfer some files from one virutal machine to another virtual machine
+
+5. Perform Full Cloning and Linked Cloning iin one of the above machines
+6. Enable a Template mode for Parent Virtual Machine of Linked clone

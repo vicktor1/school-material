@@ -120,11 +120,48 @@ header {
 }
 
 .features-block,.company-block {
-	background-color: black;
-	position: absolute;
-	color: white;
-	display: none;
+	position: fixed;
+	display: none;	/* initially we will set display to none
+									 to hide detail from the user */
 	padding: 20px;
-
 	border-radius: 20px;
+
+	line-height: 1.5em;
+	box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
+	overflow: auto;
+}
+
+.space {
+	padding: 10px;
+	margin-top: 80px;
+}
+
+.mobile-img {
+	display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+
+	.lets-explore {
+		display: none;
+	}
+	
+	.hero-image {
+		display: none;
+	}
+
+.make-remote-work {
+	width: 80%;
+}
+.mobile-img {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.mobile-img img {
+	display: block;
+	width: 100%;
+}
 }
