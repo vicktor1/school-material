@@ -15,3 +15,9 @@ Spark -> Scala, python3
 
 	- created a cluster
 	- attached cluster
+
+# Second Day
+- Scala
+
+# Third Day
+- Transformations function in scala

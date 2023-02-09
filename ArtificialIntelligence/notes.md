@@ -7,3 +7,5 @@
 3. Discussion on AI and Machine Learning
 
 AI lab 1
+
+[school link](https://www.ics.uci.edu/~dechter/courses/ics-275a/fall-99/slides/node280.html)

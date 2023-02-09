@@ -1,0 +1,10 @@
+numbers
+square, 
+sort
+oddSquare
+EvenSqaure
+
+primeNumber + sigma
+range
+sorting
+common friends

@@ -12,6 +12,5 @@ Spark -> Scala, python3
 
 5. DataBrick
 [Community edition](https://community.cloud.databricks.com)
-
 	- created a cluster
 	- attached cluster

@@ -1,0 +1,238 @@
+<p><em>Name:</em> <strong>Kushal</strong> <em>Submitter Name:</em> <strong>Ketan Sabale</strong> College Name: PDEU</p>
+<h1 id="nodejs-code-for-file-read-write-append-delete">NodeJS Code for File Read, Write, Append, Delete</h1>
+<pre><code>&#39;use strict&#39;;
+const http = require(&#39;http&#39;);
+const fs = require(&#39;fs&#39;);
+const querystring = require(&#39;querystring&#39;);
+
+
+
+//create a server object:
+http.createServer((req, res) =&gt; {
+    if (req.method == &#39;GET&#39;)
+    {
+        res.setHeader(&quot;Content-Type&quot;, &quot;text/html&quot;);
+        switch (req.url) 
+        {
+            case &quot;/&quot;:
+            case &quot;/index.html&quot;:
+                res.writeHead(200);
+                try 
+                {
+                    res.write(fs.readFileSync(&#39;index.html&#39;, &#39;utf8&#39;));  //write a response to the client
+                } catch (err) {
+                    console.error(err);
+                    process.exit();
+                }
+                res.end();          // end the response
+                break;
+            
+            default:
+                res.write(&quot;404&quot;);
+                res.end();
+        }
+    }
+    else if (req.method == &quot;POST&quot;)
+    {
+        if (req.url == &quot;/submission&quot;) 
+        {
+            req.once(&quot;data&quot;, function(data) {
+                let post;
+                res.setHeader(&#39;Content-Type&#39;, &#39;text/html&#39;);
+                res.writeHead(200);
+                post = querystring.parse(data.toString());
+                if (post.filename1)
+                {
+                    if (post.task1 == &quot;read&quot;)
+                    {
+                        try {
+                            res.write(`-----------------------------------${post.filename1}--------------------&lt;br&gt;`);
+                            res.write(`&lt;html&gt;&lt;body&gt;&lt;pre&gt;${fs.readFileSync(post.filename1, &#39;utf8&#39;)}&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;`);  //write a response to the clieNt
+                        } catch (err) {
+                            console.error(err);
+                            process.exit();
+                        }                   
+                    }
+                    
+                    if (post.task1 == &quot;write&quot;)
+                    {
+                        try {
+                            res.write(`written text: &quot;${post.data2write}&quot; ${post.filename1}`);
+                            fs.writeFile(post.filename1, post.data2write, (err) =&gt; {
+                                if (err) throw err;
+                                res.write(&#39;The file has been saved&#39;);
+                            });
+                        } catch (err) {
+                            console.error(err);
+                            process.exit();
+                        }
+                    }
+                    if (post.task1 == &quot;append&quot;)
+                    {
+                        try {
+                            res.write(`appended text: &quot;${post.data2write}&quot; ${post.filename2}`);
+                            fs.appendFile(post.filename1, post.data2write, (err) =&gt; {
+                                if (err) throw err;
+                                res.write(&#39;The data to append was append to file!&#39;);
+                            });
+                        }
+                        catch (err) {
+                            console.error(err);
+                        }
+                    }
+                    if (post.task1 == &quot;delete&quot;)
+                    {
+                        fs.unlink(post.filename1, (err) =&gt; {
+                            if (err) throw err;
+                            res.write(`${post.filename1} was deleted`);
+                        })
+                    }
+                }
+                if (post.filename2)
+                {
+                    if (post.task1 == &quot;read&quot;)
+                    {
+                        try {
+                            res.write(`-----------------------------------${post.filename2}--------------------&lt;br&gt;`);
+                            res.write(`&lt;html&gt;&lt;body&gt;&lt;pre&gt;${fs.readFileSync(post.filename2, &#39;utf8&#39;)}&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;`);  //write a response to the clieNt
+                        } catch (err) {
+                            console.error(err);
+                            process.exit();
+                        }                   
+                    }
+                    else if (post.task1 == &quot;write&quot;)
+                    {
+                        try {
+                            res.write(`written text: &quot;${post.data2write}&quot; ${post.filename2}`);
+                            fs.writeFile(post.filename2, post.data2write, (err) =&gt; {
+                                if (err) throw err;
+                                res.write(&#39;The file has been saved&#39;);
+                            }); 
+                        } catch (err) {
+                            console.error(err);
+                            process.exit();
+                        }
+                    }
+                    if (post.task1 == &quot;append&quot;)
+                    {
+                        try {
+                            res.write(`appended text: &quot;${post.data2write}&quot; ${post.filename2}`);
+                            fs.appendFile(post.filename2, post.data2write, (err) =&gt; {
+                                if (err) throw err;
+                                res.write(&#39;The data to append was append to file!&#39;);
+                            });
+                        }
+                        catch (err) {
+                            console.error(err);
+                        }
+                    }
+                    if (post.task1 == &quot;delete&quot;)
+                    {
+                        fs.unlink(post.filename2, (err) =&gt; {
+                            if (err) throw err;
+                            res.write(`${post.filename2} was deleted`);
+                        });
+                    }
+                }
+                res.end();
+            });
+        }
+    }
+}).listen(8080);            // the server object listens on port 8080</code></pre>
+<p><img src="output.png" /></p>
+<pre><code>function fun(myFun, str) {
+    myFun(str);
+    }
+    fun( function(str){ console.log(str) }, &quot;OK!&quot; );
+var fs = require(&quot;fs&quot;);
+console.log(&quot;This is a sample to rename a file!&quot;);
+fs.rename(&quot;aaa.txt&quot;, &quot;bbb.txt&quot;, function(err) {
+if (err) {
+return console.error(err);
+}
+console.log(&quot;aaa.txt has renamed as bbb.txt successfully!&quot;);
+});
+
+console.log(&#39;You can see the next message in 6 seconds:&#39;)</code></pre>
+<pre><code>var EventEmitter = require(&#39;events&#39;) 
+var eventObj = new EventEmitter(); 
+eventObj.on(&#39;delayEvent&#39;, function() { 
+console.log(&#39;The event delays 6000 milliseconds&#39;);
+});
+setTimeout(function() { 
+eventObj.emit(&#39;delayEvent&#39;); 
+}, 6000);
+var events = require(&#39;events&#39;);
+
+var eventObj = new events.EventEmitter();
+
+eventObj.on(&#39;Event001&#39;, function(){
+console.log(&#39;Event001 Done!&#39;);
+});
+
+eventObj.on(&#39;Event002&#39;, function(){
+console.log(&#39;Event002 Done!&#39;);
+});
+
+eventObj.emit(&#39;Event001&#39;);
+
+eventObj.emit(&#39;Event002&#39;);
+console.log (&quot;All events are done successfully!&quot;);
+</code></pre>
+<pre><code>var fs = require(&quot;fs&quot;); 
+var data = &#39;Read the File Stream: &#39;; 
+var obj = fs.createReadStream(&#39;mytext.txt&#39;);
+obj.setEncoding(&#39;utf8&#39;); 
+obj.on(&#39;data&#39;, function(datas) { 
+data += datas; 
+});
+obj.on(&#39;end&#39;,function(){ 
+console.log(data);
+});
+obj.on(&#39;error&#39;, function(e){ 
+console.log(e.stack); 
+});
+console.log(&quot;An example of reading a file stream&quot;);</code></pre>
+<pre><code>function fun(str) { 
+    console.log(str);
+    }
+    fun(&quot;MySQL in 8 Hours!&quot;);
+</code></pre>
+<pre class="node"><code>function fun1(str) {
+    console.log(str);
+    }
+    function fun2(myFun, str) {
+    myFun(str);
+    }
+    fun2(fun1, &quot;Good!&quot;);</code></pre>
+<pre><code>var os = require(&quot;os&quot;);
+console.log(&#39;The information of the current os is as follows:&#39;);
+
+console.log(&#39;The host name is: &#39; + os.hostname());
+
+console.log(&#39;The type of the operating system is: &#39; + os.type());
+
+console.log(&#39;The platform is: &#39; + os.platform());
+
+console.log(&#39;The total memory is: &#39; + os.totalmem() + &quot; bytes.&quot;);
+
+console.log(&#39;The free memory is: &#39; + os.freemem() + &quot; bytes.&quot;);
+
+console.log(&#39;The os version is: &#39; + os.release() + &quot; version.&quot;);
+
+console.log(&#39;The os runtime is: &#39; + os.uptime() + &quot; seconds.&quot;);</code></pre>
+<pre><code>var mysql = require(&#39;mysql&#39;);
+var con = mysql.createConnection({
+    host: &quot;localhost&quot;,
+    user: &quot;root&quot;,
+    password: &quot;&quot;
+});
+
+con.connect(function (err) {
+    
+    console.log(&quot;Connected!&quot;);
+    con.query(&quot;CREATE DATABASE demo&quot;, function (err, result) {
+        
+        console.log(&quot;Database created&quot;);
+    });
+});</code></pre>

@@ -1,4 +1,3 @@
-
 struct stack {
 	int *buf;
 	int count;
