@@ -133,7 +133,7 @@ void solve(int initial[N][N], int x, int y,
 		Node* min = pq.top();
 
 		// The found node is deleted from the list of
-		// live nodes
+		// live nodes	
 		pq.pop();
 
 		// if min is an answer node
